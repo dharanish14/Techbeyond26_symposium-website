@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration | Upside Down</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="register-page">
+
+<section class="register-container">
+
+    <h1>REGISTRATION</h1>
+
+    <form id="regForm">
+
+        <input id="name" type="text" placeholder="Full Name" required>
+        <input id="college" type="text" placeholder="College Name" required>
+        <input id="dept" type="text" placeholder="Department" required>
+        <input id="year" type="number" placeholder="Year" required>
+        <input id="phone" type="tel" placeholder="Phone Number" required>
+        <input id="email" type="email" placeholder="Email" required>
+
+        <h3>Select Events</h3>
+
+        <label><input type="checkbox" value="Paper Presentation"> Paper Presentation</label>
+        <label><input type="checkbox" value="Code Hunt"> Code Hunt</label>
+        <label><input type="checkbox" value="Debugging"> Debugging</label>
+        <label><input type="checkbox" value="Quiz"> Quiz</label>
+        <label><input type="checkbox" value="Connections"> Connections</label>
+        <label><input type="checkbox" value="Surprise Event"> Surprise Event</label>
+
+        <!-- IMPORTANT -->
+        <button type="submit">PROCEED TO PAYMENT</button>
+
+    </form>
+
+</section>
+
+<script>
+document.getElementById("regForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const events = [];
+    document.querySelectorAll('input[type="checkbox"]:checked')
+        .forEach(cb => events.push(cb.value));
+
+    const data = {
+        name: document.getElementById("name").value,
+        college: document.getElementById("college").value,
+        department: document.getElementById("dept").value,
+        year: document.getElementById("year").value,
+        phone: document.getElementById("phone").value,
+        email: document.getElementById("email").value,
+        events: events,
+        amount: 200
+    };
+
+    // SEND TO BACKEND (NON-BLOCKING)
+    fetch("http://localhost:5000/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(result => {
+        localStorage.setItem("regID", result.registration_id);
+    })
+    .catch(err => {
+        console.error("Backend error:", err);
+    })
+    .finally(() => {
+        // ✅ ALWAYS REDIRECT
+        window.location.href = "payment.html";
+    });
+});
+</script>
+
+</body>
+</html>

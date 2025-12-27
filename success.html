@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Success | Registration Complete</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="success-page">
+
+<section class="success-container">
+
+    <h1>REGISTRATION SUCCESSFUL</h1>
+
+    <p>Your portal has closed safely.</p>
+
+    <div class="reg-id">
+        Registration ID:
+        <span id="regId">VEC-ST-001</span>
+    </div>
+
+    <p class="note">
+        Save this ID for future reference.
+    </p>
+
+</section>
+
+<script>
+const id = localStorage.getItem("regID");
+document.getElementById("regId").innerText = id ? id : "NOT GENERATED";
+</script>
+
+
+
+</body>
+</html>

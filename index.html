@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VELAMMAL ENGINEERING COLLEGE | SYMPOSIUM</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- VIDEO BACKGROUND -->
+    <div class="video-container">
+        <video id="bgVideo" muted loop playsinline poster="assets/images/poster.jpg">
+            <!-- TEMP TEST VIDEO (REPLACE LATER WITH YOUR OWN) -->
+            <source src="assets/video/college_mindflayer.mp4" type="video/mp4">
+
+        </video>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h1 class="college-name">
+    VELAMMAL ENGINEERING COLLEGE
+</h1>
+
+
+        <p class="tagline">
+            A symposium trapped in the Upside Down
+        </p>
+
+        <div class="scroll-indicator">
+            ↓ SCROLL ↓
+        </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section class="events">
+        <h2>EVENTS</h2>
+
+        <div class="event-cards">
+            <div class="card">
+                <h3>Technical</h3>
+                <ul>
+                    <li>Paper Presentation</li>
+                    <li>Code Hunt</li>
+                    <li>Debugging</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Non-Technical</h3>
+                <ul>
+                    <li>Quiz</li>
+                    <li>Connections</li>
+                    <li>Photography</li>
+                </ul>
+            </div>
+
+            <div class="card mystery">
+                <h3>???</h3>
+                <p>Only revealed in the Upside Down</p>
+            </div>
+        </div>
+
+       <button class="register-btn" onclick="enterUpsideDown()">
+
+            ENTER THE UPSIDE DOWN
+        </button>
+    </section>
+
+    <!-- FORCE VIDEO PLAY -->
+    <script>
+        window.addEventListener("load", () => {
+            const video = document.getElementById("bgVideo");
+            video.play().catch(err => {
+                console.log("Autoplay blocked, poster shown");
+            });
+        });
+    </script>
+<script src="js/animations.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment | Upside Down</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="payment-page">
+
+<section class="payment-container">
+
+    <h1>PAYMENT</h1>
+
+    <p class="amount">Amount: ₹200</p>
+
+    <div class="upi-box">
+        <p>Pay to UPI ID</p>
+        <h2>yourupiid@bank</h2>
+        <img src="assets/images/upi-qr.png" alt="UPI QR Code">
+    </div>
+
+    <!-- IMPORTANT: type="button" -->
+    <button type="button" id="payBtn">
+        I HAVE PAID
+    </button>
+
+</section>
+
+<script>
+document.getElementById("payBtn").addEventListener("click", function () {
+    window.location.href = "success.html";
+});
+</script>
+
+</body>
+</html>

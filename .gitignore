@@ -1,0 +1,14 @@
+# Python virtual environment
+venv/
+backend/venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Secrets
+credentials.json
+
+# OS files
+.DS_Store
+Thumbs.db
