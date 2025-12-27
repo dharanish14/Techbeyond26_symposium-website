@@ -37,43 +37,40 @@
 </section>
 
 <script>
-document.getElementById("regForm").addEventListener("submit", function (e) {
-    e.preventDefault();
+document.getElementById("regForm").addEventListener("submit", function(e) {
+  e.preventDefault();
 
-    const events = [];
-    document.querySelectorAll('input[type="checkbox"]:checked')
-        .forEach(cb => events.push(cb.value));
+  const events = [];
+  document.querySelectorAll('input[type="checkbox"]:checked')
+    .forEach(cb => events.push(cb.value));
 
-    const data = {
-        name: document.getElementById("name").value,
-        college: document.getElementById("college").value,
-        department: document.getElementById("dept").value,
-        year: document.getElementById("year").value,
-        phone: document.getElementById("phone").value,
-        email: document.getElementById("email").value,
-        events: events,
-        amount: 200
-    };
+  const data = {
+    name: document.getElementById("name").value,
+    college: document.getElementById("college").value,
+    department: document.getElementById("dept").value,
+    year: document.getElementById("year").value,
+    phone: document.getElementById("phone").value,
+    email: document.getElementById("email").value,
+    events: events,
+    amount: 200 
+  };
 
-    // SEND TO BACKEND (NON-BLOCKING)
-    fetch("http://localhost:5000/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-    })
-    .then(res => res.json())
-    .then(result => {
-        localStorage.setItem("regID", result.registration_id);
-    })
-    .catch(err => {
-        console.error("Backend error:", err);
-    })
-    .finally(() => {
-        // ✅ ALWAYS REDIRECT
-        window.location.href = "payment.html";
-    });
+  fetch("https://script.google.com/macros/s/AKfycbyWNqJolbTQwGFT8XjURtqYQnioEidZuDrFeagLTMfG160I-BU8_xmvgzZFJBu649Bk/exec", {
+    method: "POST",
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(result => {
+    localStorage.setItem("regID", result.registration_id);
+    window.location.href = "payment.html";
+  })
+  .catch(err => {
+    alert("Error submitting form");
+    console.error(err);
+  });
 });
 </script>
+
 
 </body>
 </html>
